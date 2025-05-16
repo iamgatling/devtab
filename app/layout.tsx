@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Fira_Code } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { AuthProvider } from "@/context/auth-context"
