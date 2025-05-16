@@ -52,6 +52,9 @@ export default function GitHubSuccessPage() {
             githubConnectedAt: new Date(),
           })
         }
+        console.log("GitHub token:", token)
+        console.log("Firebase user:", user)
+        console.log("GitHub profile:", profile)
 
         // Redirect back to the dashboard
         const redirectUrl = sessionStorage.getItem("githubRedirectUrl") || "/"
