@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/context/auth-context"
@@ -20,7 +19,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-  const { signIn } = useAuth()
+
+  const { user, signIn, loading } = useAuth()
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,7 +30,7 @@ export default function LoginPage() {
 
     try {
       await signIn(email, password)
-      router.push("/")
+      // Do not redirect here — wait for user state
     } catch (error) {
       console.error("Login error:", error)
       setError("Failed to log in. Please check your credentials.")
@@ -38,6 +38,13 @@ export default function LoginPage() {
       setIsLoading(false)
     }
   }
+
+  // Redirect 
+  useEffect(() => {
+    if (!loading && user) {
+      router.push("/")
+    }
+  }, [user, loading, router])
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
