@@ -46,10 +46,10 @@ export async function GET(request: NextRequest) {
       console.error("GitHub OAuth error:", tokenData.error)
       return NextResponse.redirect(`${APP_URL}/github-error?error=${tokenData.error}`)
     }
-
+    console.log("Token response:", tokenData)
     // Create a response that redirects to the GitHub success page
     const response = NextResponse.redirect(`${APP_URL}/github-success?token=${tokenData.access_token}`)
-
+    
     // Clear the state cookie
     response.cookies.set("github_oauth_state", "", {
       httpOnly: true,
