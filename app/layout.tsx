@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description: "A minimalist dashboard for developers",
 }
 
+console.log("API KEY:", process.env.NEXT_PUBLIC_FIREBASE_API_KEY)
+
 export default function RootLayout({
   children,
 }: Readonly<{
