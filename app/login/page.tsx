@@ -44,7 +44,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
-          <CardDescription>Enter your credentials to access your dashboard</CardDescription>
+          <CardDescription>Login to access your dashboard</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {error && (
